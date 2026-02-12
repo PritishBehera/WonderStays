@@ -1,0 +1,23 @@
+<% layout("./layouts/boilerplate")%>
+
+    <body>
+        <h3>All Listings of WonderStays are Here</h3>
+        <!-- <form method="get" action="/listings/new">
+        <button>Create a new list</button>
+    </form> -->
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
+        <% for(list of allLists) { %>
+        <div class="card col" style="width: 20rem;">
+            <img src="<%=list.image.url%>" class="card-img-top" alt="">
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="/listings/<%=list._id%>"><%=list.title%></a> <br>
+                    &#8377;<%=list.price.toLocaleString("en-IN")%> per Night
+                </p>
+            </div>
+        </div>
+        <%}%>
+    </div>
+    
+        
+    </body>

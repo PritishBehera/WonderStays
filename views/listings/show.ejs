@@ -1,0 +1,25 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <h3>Details of your hotels are here</h3>
+    <ul>
+        <li>
+            <%=list.title%>
+        </li>
+        <li>
+            <%=list.description%>
+        </li>
+        <li>
+            &#8377;<%=list.price.toLocaleString("en-IN")%>
+        </li>
+        <li>
+            <%=list.location%>
+        </li>
+        <li>
+            <%=list.country%>
+        </li>
+    </ul>
+    <a href="/listings/<%=list.id%>/edit">Edit this Listing</a><br><br>
+    <form method="POST" action="/listings/<%=list.id%>?_method=DELETE">
+        <button>DELETE</button>
+    </form>
+</body>

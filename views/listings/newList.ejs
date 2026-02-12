@@ -1,0 +1,15 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+    <h3>Create a new List</h3>
+    <form method="Post" action="/listings/new">
+        <input type="text" name="listing[title]" placeholder="enter the title of the hotel"><br><br>
+        <textarea name="listing[description]" id="" rows="5"
+            placeholder="enter few description about it(like best part of the hotel, extra benefits etc)"></textarea><br><br>
+        <input type="text" name="listing[image]" placeholder="enter the image here or link"><br><br>
+        <input type="text" name="listing[price]" placeholder="enter price per one night stay"><br><br>
+        <input type="text" name="listing[location]" placeholder="enter the location of your Hotel"><br><br>
+        <input type="text" name="listing[country]" placeholder="enter the country of the hotel is present"><br>
+        <br>
+        <button>Create</button>
+    </form>
+</body>
