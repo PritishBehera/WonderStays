@@ -1,6 +1,12 @@
-/* body{
-    background-color: plum;
-} */
+body{
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
 
 /* navbar */
 .navbar{
@@ -17,7 +23,7 @@
     color:#222222 !important;
 }
 
-.f-info-links a{
+.row a{
     text-decoration: none;
     color: #222222;
 }
@@ -53,6 +59,10 @@
     color: #222222;
 }
 
+.card-text a:hover{
+    text-decoration: underline !important;
+}
+
 .card{
     border: none !important;
     margin-bottom: 2rem;
@@ -62,4 +72,37 @@
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
+    /* height: 250px; */
+    /* width: 250px; */
+}
+
+.card-body{
+    font-weight:400;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover{
+    opacity:0.2;
+    background-color: white;
+}
+.footer-margin{
+    margin-right:.9rem;
+}
+
+.add-btn, .btn-edit{
+    background-color: #fe424d !important;
+    border:none !important;
+}
+
+.show-edit-btn{
+    background-color: #fe424d !important;
+    color: white !important;
+    border: none !important;
+}
+
+.show-img{
+    height: 50vh;
 }

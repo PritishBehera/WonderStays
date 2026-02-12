@@ -15,8 +15,9 @@ const listingSchema = new Schema ({
         // set:(v)=> v===" "
         //     ?"D:\MajorProject\images\pexels-dorjan-frrokaj-118638963-11703240.jpg"
         //     : v,
-        filename:String,
-        url:String,
+        // filename:String,
+        // url:String,
+        type:String,
     },
     price:{
         type:Number,

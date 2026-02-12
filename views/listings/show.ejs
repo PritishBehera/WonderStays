@@ -1,25 +1,31 @@
 <% layout("./layouts/boilerplate") %>
 <body>
-    <h3>Details of your hotels are here</h3>
-    <ul>
-        <li>
-            <%=list.title%>
-        </li>
-        <li>
-            <%=list.description%>
-        </li>
-        <li>
-            &#8377;<%=list.price.toLocaleString("en-IN")%>
-        </li>
-        <li>
-            <%=list.location%>
-        </li>
-        <li>
-            <%=list.country%>
-        </li>
-    </ul>
-    <a href="/listings/<%=list.id%>/edit">Edit this Listing</a><br><br>
-    <form method="POST" action="/listings/<%=list.id%>?_method=DELETE">
-        <button>DELETE</button>
-    </form>
+    <div class="row">
+        <div class="col-8 offset-2 mt-3">
+            <h3>Details of your hotels are here</h3>
+            <div class="card col mt-3" class="col-8 offset-2 mt-3">
+                <img src="<%=list.image%>" class="card-img-top show-img" alt="listing-image">
+                <!-- <div class="card-img-overlay"></div> -->
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%=list.title%></b><br>
+                        <%=list.description%> <br>
+                        <b>Price:</b> &#8377;<%=list.price.toLocaleString("en-IN")%> per Night <br>
+                        <b>Location:</b> <%=list.location%>,
+                        <%=list.country%>
+                    </p>
+                </div>
+            </div>
+            <div class="btns d-flex gap-5 justify-content-center">
+                <a class="btn btn-dark show-edit-btn mb-3" 
+                href="/listings/<%=list.id%>/edit">
+                Edit  </a>
+
+                <form method="POST" action="/listings/<%=list.id%>?_method=DELETE">
+                    <button class="btn delete-btn btn-dark mb-3">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
 </body>

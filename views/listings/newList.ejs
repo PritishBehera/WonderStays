@@ -1,15 +1,39 @@
 <% layout("./layouts/boilerplate") %>
-<body>
-    <h3>Create a new List</h3>
-    <form method="Post" action="/listings/new">
-        <input type="text" name="listing[title]" placeholder="enter the title of the hotel"><br><br>
-        <textarea name="listing[description]" id="" rows="5"
-            placeholder="enter few description about it(like best part of the hotel, extra benefits etc)"></textarea><br><br>
-        <input type="text" name="listing[image]" placeholder="enter the image here or link"><br><br>
-        <input type="text" name="listing[price]" placeholder="enter price per one night stay"><br><br>
-        <input type="text" name="listing[location]" placeholder="enter the location of your Hotel"><br><br>
-        <input type="text" name="listing[country]" placeholder="enter the country of the hotel is present"><br>
-        <br>
-        <button>Create</button>
-    </form>
-</body>
+<div class="row mt-3">
+    <div class="col-8 offset-1">
+        <body>
+            <h3>Create a new List</h3>
+            <form method="Post" action="/listings/new">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="listing[title]" placeholder="enter the title of the hotel" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" id="" rows="5" class="form-control"
+                    placeholder="enter few description about it(like best part of the hotel, extra benefits etc)"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" name="listing[image]" placeholder="enter the image link here" class="form-control">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" name="listing[price]" placeholder="enter price per one night stay" class="form-control">
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" placeholder="enter the location of your Hotel" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]" placeholder="enter the country of the hotel is present" class="form-control">
+                </div>
+                <button class=" add-btn btn btn-dark mt-3">Add</button>
+                <br><br>
+            </form>
+        </body>
+    </div>
+</div>
