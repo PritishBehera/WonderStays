@@ -38,11 +38,11 @@ body{
     display: flex;
     text-align: center;
     justify-content: center;
-    margin-right: 1.5rem;
-    margin-top: 0.5rem;
+    margin-right: 1.51rem;
+    margin-top: 0.51rem;
 }
 .f-info-socials{
-    font-size: 1.5rem;
+    font-size: 1.51rem;
 
 }
 
@@ -85,7 +85,7 @@ body{
 }
 
 .card-img-overlay:hover{
-    opacity:0.2;
+    opacity:0.21;
     background-color: white;
 }
 .footer-margin{
