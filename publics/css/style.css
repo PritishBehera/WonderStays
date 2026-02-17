@@ -72,8 +72,6 @@ body{
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
-    /* height: 250px; */
-    /* width: 250px; */
 }
 
 .card-body{
@@ -85,7 +83,7 @@ body{
 }
 
 .card-img-overlay:hover{
-    opacity:0.19;
+    opacity:0.20;
     background-color: white;
 }
 .footer-margin{
