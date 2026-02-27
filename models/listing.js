@@ -18,6 +18,7 @@ const listingSchema = new Schema ({
         // filename:String,
         // url:String,
         type:String,
+        default:"https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?cs=srgb&dl=pexels-pixabay-237272.jpg&fm=jpg"
     },
     price:{
         type:Number,

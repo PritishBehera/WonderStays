@@ -6,7 +6,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate= require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
-const expressError = require("./utils/expressError.js")
+const expressError = require("./utils/expressError.js");
+const {listingSchema} = require("./schema.js");
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -33,6 +34,18 @@ app.get("/",(req,res)=>{
     
 });
 
+const validateListing = (req,res,next) => {
+    let {error} = listingSchema.validate(req.body);
+    
+    if(error){
+        let errMsg = error.details.map((el)=>el.message).join(",");
+        throw new expressError(400,errMsg);
+    }else{
+        next();
+    }
+    
+}
+
 // app.get("/testListing",async(req,res)=>{
 //     let listing1= new Listing({
 //         title:"Loop house",
@@ -56,10 +69,8 @@ app.get("/listings/new",(req,res)=>{
     res.render("./listings/newList.ejs");
 });
 
-app.post("/listings/new", wrapAsync(async(req,res)=>{
-    if(!req.body.listings){
-        throw new expressError(400,"Send valid data for listing");
-    }
+app.post("/listings/new",validateListing, wrapAsync(async(req,res,next)=>{
+    
     let newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
@@ -71,6 +82,7 @@ app.get("/listings/:id/edit",wrapAsync(async(req,res)=>{
     let list= await Listing.findById(id);
     res.render("./listings/edit.ejs",{list});
 }));
+
 
 //update route
 app.put("/listings/:id", wrapAsync(async(req,res)=>{
@@ -97,14 +109,17 @@ app.delete("/listings/:id",wrapAsync(async(req,res)=>{
     res.redirect("/listings");
 }));
 
-app.use((req,res,next) => {
-    next( new expressError(404,"Page Not Found"));
-});
+
 
 app.use((err,req,res,next)=>{
     let{statusCode=500,message="something went wrong"}=err;
     res.status(statusCode).render("error.ejs",{message});
     // res.status(statusCode).send(message);
+});
+app.use((req,res,next) => {
+    if(!res.headersSent){
+    next( new expressError(404,"Page Not Found"));
+    }
 });
 
 app.listen(3000,()=>{
