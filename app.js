@@ -5,6 +5,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate= require("ejs-mate");
 const expressError = require("./utils/expressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -13,8 +15,17 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/publics")));
 
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const sessionOptions = {
+    secret:"mySecret",
+    resave:false,
+    saveUnitialized:true,
+    cookie:{
+        expires :Date.now + 7*24*60*60*1000 ,
+        maxAge :7*24*60*60*1000,
+        httpOnly:true,
+    }
+};
+
 
 main()
     .then(()=>{
@@ -32,6 +43,17 @@ async function main() {
 app.get("/",(req,res)=>{
     console.log("i am groot");
     
+});
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+const listings = require("./routes/listing.js");
+const reviews = require("./routes/review.js");
+
+app.use((req,res,next)=>{
+    res.locals.successList = req.flash("successList");
+    next();
 });
 
 app.use("/listings",listings);
