@@ -19,7 +19,7 @@ const listingSchema = new Schema ({
         // filename:String,
         // url:String,
         type:String,
-        default:"https://images.unsplash.com/photo-1499793983690-e2…wfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+        default:"https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
     },
     price:{
         type:Number,

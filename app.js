@@ -18,14 +18,13 @@ app.use(express.static(path.join(__dirname,"/publics")));
 const sessionOptions = {
     secret:"mySecret",
     resave:false,
-    saveUnitialized:true,
+    saveUninitialized:true,
     cookie:{
         expires :Date.now + 7*24*60*60*1000 ,
         maxAge :7*24*60*60*1000,
         httpOnly:true,
     }
 };
-
 
 main()
     .then(()=>{
@@ -42,7 +41,6 @@ async function main() {
 
 app.get("/",(req,res)=>{
     console.log("i am groot");
-    
 });
 
 app.use(session(sessionOptions));
@@ -52,7 +50,8 @@ const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
 
 app.use((req,res,next)=>{
-    res.locals.successList = req.flash("successList");
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
     next();
 });
 
@@ -65,13 +64,11 @@ app.use((err,req,res,next)=>{
     // res.status(statusCode).send(message);
 });
 
+
 app.use((req,res,next) => {
-    if(!res.headersSent){
     next( new expressError(404,"Page Not Found"));
-    }
 });
 
 app.listen(3000,()=>{
     console.log("server is listening on port 3000");
-    
 });
