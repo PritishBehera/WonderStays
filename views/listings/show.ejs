@@ -8,7 +8,8 @@
                 <!-- <div class="card-img-overlay"></div> -->
                 <div class="card-body">
                     <p class="card-text">
-                        <%=list.description%> <br>
+                        <b>Owned By:&nbsp;<i><%=list.owner.username%></i></b><br>
+                        <b>Description:</b><br><%=list.description%> <br>
                         <b>Price:</b> &#8377;<%=list.price.toLocaleString("en-IN")%> per Night <br>
                         <b>Location:</b> <%=list.location%>,
                         <%=list.country%>
