@@ -3,7 +3,7 @@
     <div class="col-8 offset-2">
         <body>
             <h3>Create a new List</h3>
-            <form method="Post" action="/listings/new" class="needs-validation" novalidate>
+            <form method="Post" action="/listings/new" class="needs-validation" novalidate enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" name="listing[title]" placeholder="enter the title of the hotel" class="form-control">
@@ -14,8 +14,8 @@
                     placeholder="enter few description about it(like best part of the hotel, extra benefits etc)"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="text" name="listing[image]" placeholder="enter the image link here" class="form-control" required>
+                    <label for="image" class="form-label">Upload Listing Image</label>
+                    <input type="file" name="listing[image]" class="form-control" required>
                     <div class="invalid-feedback">Image link is Required!!</div>
                 </div>
                 <div class="row">
