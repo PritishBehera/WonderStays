@@ -11,15 +11,8 @@ const listingSchema = new Schema ({
         type:String,
     },
     image:{
-        // type:String,
-        // default:"D:\MajorProject\images\pexels-dorjan-frrokaj-118638963-11703240.jpg",
-        // set:(v)=> v===" "
-        //     ?"D:\MajorProject\images\pexels-dorjan-frrokaj-118638963-11703240.jpg"
-        //     : v,
-        // filename:String,
-        // url:String,
-        type:String,
-        default:"https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+        url:String,
+        filename:String,
     },
     price:{
         type:Number,

@@ -7,17 +7,17 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const {isLoggedIn,isOwner,validateListing} =require("../middleware.js");
 const listingControllers = require("../controllers/listing.js");
 const multer = require("multer");
-const upload = multer({dest:'uploads/'});
+const {storage} = require("../cloudConfig.js");
+const upload = multer({storage});
 
 router.route("/new")
     //create new list route
     .get(isLoggedIn,listingControllers.newListingForm)
-    // .post(
-    // isLoggedIn,
-    // validateListing, wrapAsync(listingControllers.createListing));
-    .post(upload.single('listing[image]'),(req,res,next)=>{
-        res.send(req.file);
-    });
+    .post(
+    isLoggedIn,
+    validateListing,upload.single('listing[image]') ,
+    wrapAsync(listingControllers.createListing)
+    );
 
 //main route
 router.get("/",wrapAsync(listingControllers.index));
